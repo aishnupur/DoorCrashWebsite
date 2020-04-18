@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+<!--==================================================================
+//
+// Web site: DoorCrash
+// Web page: Order Page
+// Description:
+//   This place asks user about his/her contact information 
+//   and helps them place an order.
+// 
+//=================================================================-->
+
+<head>
+  
+	<title>Order, v4</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="[name]"/>
+	<meta name="description" content="[application title]"/>
+	<meta http-equiv="Expires" content="-1">
+	</script><script type="text/javascript">
+
+		//==================================================
+		// SomeFunction
+		//==================================================
+		function SomeFunction()
+		{
+		}
+		
+	</script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	 </script>
+	<link rel="stylesheet" type="text/css" href="stylesheet.css">
+	<script type="text/javascript">
+		"use strict";
+		  var food_items = []; 
+		  var cost_food;
+		 //jQuery call to function ajax
+		  $(document).ready(function ()
+			{
+				$.ajax({
+      				url: 'FoodData.json',
+      				type: 'GET',
+					cache: false,
+					dataType: "json",       
+      				success: getFoodItemsResponse()
+        			
+   				});
+			
+			});
+		 // store the server response in the food items array, show an alert message, and log to the console all the food items.  
+		  function getFoodItemsResponse()
+
+			{
+			try
+    		    {
+					//Retrieve data from file FoodData.json
+       				 // Create server request
+       				 var xhttp = new XMLHttpRequest();
+       				 xhttp.onreadystatechange = function() 
+       				 {
+         				 if (this.readyState == 4 && this.status == 200)
+          				 {
+         					   food_items = JSON.parse(this.responseText);
+         				 }
+    			     };     
+       				xhttp.open("GET", "FoodData.json", false);
+        			xhttp.send();
+					window.alert("Food items fetched!!");
+					console.log(food_items);
+     		    }
+      			catch (ex)
+      			{
+       				 window.alert("Error" + "\nName: " + ex.name + 
+         			 "\nMessage: " + ex.message + "\nStack: " + ex.stack);
+      			}
+			}
+			
+
+		  function ClearNodes()
+			{
+				  // Loop to remove child nodes
+				  while (ItemCombo.hasChildNodes())
+					ItemCombo.removeChild(ItemCombo.firstChild);
+
+   			}
+		  function setFoodItems()
+		    {
+					var lg;
+					var tx;
+					var value;
+				//clear the fields	
+					ClearNodes();
+				
+					lg = document.createElement("option");
+					tx = document.createTextNode("Food Item");
+					lg.appendChild(tx);
+					ItemCombo.appendChild(lg);
+					if(ch.checked)
+					{
+						for (var i = 0; i < 4; i++)
+						{
+									lg = document.createElement("option");
+									lg.textContent = (food_items[i].food_item + " " + food_items[i].cost);
+									ItemCombo.appendChild(lg);
+											}
+					}
+					else if(rb.checked)
+					{
+						for (var i =4; i < 8; i++)
+						{
+									lg = document.createElement("option");
+									lg.textContent = (food_items[i].food_item + " " + food_items[i].cost);
+									ItemCombo.appendChild(lg);
+											}
+					}
+					else if(gs.checked)
+					{
+						for (var i =8; i < 12; i++)
+						{
+									lg = document.createElement("option");
+									lg.textContent = (food_items[i].food_item + " " + food_items[i].cost);
+									ItemCombo.appendChild(lg);
+											}
+					}
+					else if(qd.checked)
+					{
+						for (var i =12; i < 16; i++)
+						{
+									lg = document.createElement("option");
+									lg.textContent = (food_items[i].food_item + " " + food_items[i].cost);
+									ItemCombo.appendChild(lg);
+											}
+					}
+		    }
+		  	function selectFoodItem(value)
+			{
+
+						console.log(ItemCombo.value);
+						cost_food = parseFloat(value.split('$')[1]);
+						console.log(cost_food);
+						document.getElementById('cost').value = cost_food; 
+						
+			}
+			function updateCosts(value)
+			{
+						var subtotal;
+						subtotal= cost_food * parseInt(value);
+						console.log(subtotal);
+						document.getElementById('sub').value = (subtotal.toFixed(2)).toString();
+						document.getElementById('tax').value = ((subtotal * .06).toFixed(2)).toString();
+						document.getElementById('total').value = ((subtotal + (subtotal * .06)).toFixed(2)).toString();
+			}
+		
+	</script>
+</head>
+ 
+<body>
+	<div class="orderbody">
+	<!-- A header has been added which mentions the name of the website -->
+	<header>DoorCrash</header>
+		<nav>
+				<a href="main.html">Home</a>
+				<a href="restaurant.html">Restaurants</a>
+				<a href="order.html">Order</a>
+				<a href=#contact>Contact Us</a>
+		</nav>
+	<br>
+	<h1 class="offer">Get Free delivery or flat 10% off on your first order!!</h1>
+	<div class="order">
+	<!-- A form is created for the user to enter his details and place an order -->
+		<form method="post" action="OrderConfirmation.php " >
+	
+		<p>
+			<label>Title:</label><br>
+			<input type="radio" name="title" value="mr">
+			Mr
+			<input type="radio" name="title" value="mrs">
+			Mrs
+			<input type="radio" name="title" value="miss">
+			Miss
+		</p>
+		<p>
+			<label>First name: </label>
+			<input type="text" name="first_name" placeholder="Enter your first name here" class="box" required>
+		</p>
+		<p>
+			<label>Last name: </label>
+			<input type="text" name="last_name" placeholder="Enter your last name here" class="box" >
+		</p>
+		<p>
+			<label>Email: </label>
+			<input type="email" name="email" class="box" placeholder="Enter your email here" required>
+		</p>
+		<p>
+			<label>Address: </label>
+			<input type="text" name="address1" placeholder="Address line 1" class="box"  required> <br>
+			<input type="text" name="address2" placeholder="Address line 2" class="box">
+		</p>
+		<p>
+			<label>Contact number:</label>
+			<input type="tel" name="phone" class="box" placeholder="Enter your contact number here" required>
+		</p>
+		<p>
+			<label>Restaurant: </label>
+			<fieldset>
+			  <input type="radio" name="restaurant" value="Chipotle" id="ch" onclick="setFoodItems()" > Chipotle<br>
+			  <input type="radio" name="restaurant" value="RustyBucket" id="rb" onclick="setFoodItems()"> Rusty Bucket<br>
+			  <input type="radio" name="restaurant" value="GauchoSteakhouse" id="gs" onclick="setFoodItems()"> Gaucho Steakhouse<br>
+			  <input type="radio" name="restaurant" value="Qdoba" id="qd" onclick="setFoodItems()"> Qdoba<br>
+			</fieldset>
+		</p>
+		<p>
+			<label>Select Items: </label>
+			<select id="ItemCombo" name="FoodItem" onchange="selectFoodItem(this.value)"></select> 
+		</p>
+		<p>
+			<label>Quantity: </u></label>
+			<input type="number" name="Quantity"  onchange="updateCosts(this.value)" required>
+		</p>
+		<p>
+			<label>Item Cost: </label>
+			<input type="text" id="cost" name= "Cost" onchange="selectFoodItem()" readonly>
+		</p>
+		<p>
+			<label>Order Subtotal: </label>
+			<input type="text" id="sub" name="SubTotal" readonly>
+		</p>
+		<p>
+			<label>Order Tax: </label>
+			<input type="text" id="tax" name="Tax" readonly>
+		</p>
+		<p>
+			<label>Order Total: </label>
+			<input type="text" id="total" name="Total" readonly>
+		</p>
+		<p>
+		<b>I agree to the <a href="/terms">terms and conditions</a></b>
+		<button>Make Payment</button>
+		<button type="reset">Reset</button>
+		</p>
+		</form>
+		</div>
+</div>	
+    <!-- All the contact information has been described in the bottom section of the web page -->
+    <footer id="contact">
+        Contact us <br>
+        DoorCrash, 42 W. Warren Ave. Detroit, MI, 48202 <br> 
+		<a href="Contact us ">support@dcrash.com</a> <br> 313-123-4567<br><br>
+        Owner:Aishwarya Kadam.<br />
+        &copy; DoorCrash 2019 All Rights Reserved.
+    </footer>  
+	
+</body>
+ 
+</html>
+
+
+
+<!--	
+
+previous code	
+		<p>
+		<label>Item: </label>
+			<select name="item" value="Choose your food item" class="box">
+				<option>Burger</option>
+				<option>Salads</option>
+				<option>Pizza</option>
+				<option>Beverages</option>
+				<option>Soup</option>
+		</select>
+		</label>
+		</p>
+		
+		<p>	
+		    <label>Quantity: </label>
+			<input type="number" name="quantity" class="box"  name="qty">
+		</p>
+		<p>
+		<label>Would you like to make a combo ?</label>
+			<select name="combo" class="box">
+				<option>Yes</option>
+				<option>No</option>
+			</select>
+		</p>
+				<p>
+		<label>If yes, what would you like to add ?</label>
+			<b><input type="checkbox" name="Soft Drinks" class="box">Soft Drinks<br></b>
+			<b><input type="checkbox" name="French Fries" class="box">French Fries<br></b>
+			<b><input type="checkbox" name="Garlic Bread" class="box">Garlic Bread<br><br></b>
+		</p>
+				<!--
+			<select name="restaurant" value="Choose your restaurant" class="box">
+			<option>Gaucho Steakhouse</option>
+			<option>Qdoba</option>
+			<option>Rusty Bucket</option>
+			<option>Chipotle</option>
+			<option>Bj's</option>
+		</select>
+-->

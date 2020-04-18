@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<!--==================================================================
+//
+// Web site: DoorCrash.com
+// Web page: Restaurants Page
+// Course:   CSC 5750
+// Homework: 3
+// Author:   Aishwarya Kadam
+// Date:     10/24/2019
+// Description:
+//    This page helps in finding the restaurants and displays choice of food items and their prices.
+//   
+// 
+//=================================================================-->
+
+<head>
+  
+	<title>Restaurants, v4</title>
+	<meta charset="UTF-8">
+    <meta name="author" content="[name]"/>
+    <meta name="description" content="[application title]"/>
+    <meta http-equiv="Expires" content="-1">
+	<script type="text/javascript">
+
+		//==================================================
+		// SomeFunction
+		//==================================================
+		function SomeFunction()
+		{
+		}
+		
+	</script>
+	  <!-- jQuery link (needed for DataTables) -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	  </script>
+	  
+	  <!-- DataTables CSS and script links -->
+	  <link rel="stylesheet" type="text/css" 
+		href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+	  </script> 
+	  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+</head>
+ 
+<body>
+	<header>DoorCrash</header>
+	<nav>
+            <a href="main.html">Home</a>
+            <a href="restaurant.html">Restaurants</a>
+            <a href="order.html">Order</a>
+			<a href=#contact>Contact Us</a>
+    </nav>
+	<h2 class="offer"><i><b>Find restaurants near you!!</h2>
+    <iframe
+	width="500"
+	height="250"
+	frameborder="0" style="border:0"
+	src="https://www.google.com/maps/embed/v1/search?key=AIzaSyD--a-yNvnan0EtA8pz_41Da0Rs3efgvS4
+    &q=record+restaurants+in+Detroit" allowfullscreen>
+	</iframe>
+
+	<fieldset>
+		<table id="Restaurant_Table" >
+			<thead>
+			  <tr>
+				<th>Restaurant Name</th>
+				<th>Image</th>
+				<th>Food Items</th>
+				<th>Price</th>
+				<th>Estimated time & Delivery mode</th>
+			  </tr>
+			</thead>
+		</table>
+
+		<!-- DataTables script -->
+		<script type="text/javascript">
+			"use strict";
+	
+					$(document).ready(function()
+    				{   
+						$('#Restaurant_Table').DataTable({
+							"ajax" : "RestaurantData.json",
+						    "autoWidth": false
+						});
+    				}); 
+		</script>  
+
+    </fieldset>
+    <!-- All the contact information has been described in the bottom section of the web page -->
+    <footer id="contact">
+        Contact us <br>
+        DoorCrash, 42 W. Warren Ave. Detroit, MI, 48202 <br> 
+		<a href="Contact us ">support@dcrash.com</a> <br> 313-123-4567<br><br>
+        Owner:Aishwarya Kadam.<br />
+        &copy; DoorCrash 2019 All Rights Reserved.
+    </footer> 
+  
+</body>
+ 
+</html>
+
+
+<!--
+Table without using dataTables
+	<table id="menu_table">
+	        <tr>
+                <th>Restaurant Name</th>
+                <th> </th>
+				<th>Food Items</th>
+				<th>Price</th>
+				<th>Estimated time & Delivery mode</th>
+    
+            <tr>
+                <td style="text-align:center;">Chipotle</td>
+                <td class="image"><img src="Images/chipotleLogo.png" height="50%"> </td>
+
+                <td>
+                    Burrito (Chicken)
+                    <br />
+                    Salad (Barbacoa)
+					<br />
+                    Tacos (Carnitas)
+					<br />
+                    Burrito (Vegetarian)
+
+                </td>
+                <td> $7 <br/> $6.50<br/> $8.50<br/> $3.50</td>
+				<td>30 minutes <br>by Scooter </td>
+
+            </tr>
+			<tr>
+                <td style="text-align:center;">Rusty Bucket</td>
+                <td class="image"><img src="Images/rustybucket.jpg" height="50%"> </td>
+                <td>
+                    
+					Double-Double Nickel Chicken Salad
+                    <br />
+                    Philly Cheesesteak			
+					<br />
+                    The Reuben
+					<br />
+                    Italian Torpedo
+                </td>
+                <td> $10 <br/> $13<br/> $17<br/> $15</td>
+				<td>15 minutes <br> by car</td>
+
+            </tr>
+
+		    <tr>
+                <td style="text-align:center;">Gaucho Steakhouse</td>
+                <td class="image"><img src="Images/gaucho-steakhouse.jpg" height="50%"> </td>
+                <td>
+                    
+					Filet Mignon Com Bacon (Wrapped In Bacon)
+                    <br />
+                    Lombo (Pork Tenderloin)			
+					<br />
+                    Costela de Porco (Baby Back Ribs)
+					<br />
+                    Linguica (Brazilian Sausage)
+                </td>
+                <td> $21 <br/> $18<br/> $20<br/> $15</td>
+				<td>5 minutes <br> by bike</td>
+            </tr>
+			<tr>
+                <td style="text-align:center;">Qdoba</td>
+                <td class="image"><img src="Images/qdoba.png" height="50%"> </td>
+                <td>
+                   	Queso Burrito (Grilled Chicken or Vegetarian)
+                    <br />
+                    Smothered Burrito (Grilled Chicken or Vegetarian)			
+					<br />
+                    Mexican Gumbo (Grilled Steak or Shredded Beef)
+					<br />
+                    Cheese (Cheddar & Monterey Jack)
+                </td>
+                <td> $8 <br/> $7<br/> $15<br/> $10</td>
+				<td>20 minutes <br> by scooter</td>
+    </table>
+-->

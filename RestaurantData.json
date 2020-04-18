@@ -1,0 +1,33 @@
+{
+    "data" : [
+    [
+      "Chipotle",
+      "<img src='Images/chipotleLogo.png' height='80px'>",
+      "Burrito (Chicken)<br> Salad (Barbacoa)<br> Tacos (Carnitas)<br> Burrito (Vegetarian)",
+      "$7 <br>$6<br> $6.5 <br> $4" ,
+      "30 minutes by Scooter"
+    ],
+    [
+      "Rusty Bucket",
+      "<img src='Images/rustybucket.jpg' height='80px'>",
+      " Double-Double Nickel Chicken Salad <br> Philly Cheesesteak <br> The Reuben <br> Italian Torpedo",
+      "$12 <br> $13 <br> $15 <br>$16" ,
+      "15 minutes by Car"
+    ],
+    [
+      "Gaucho Steakhouse",
+      "<img src='Images/gaucho-steakhouse.jpg' height='80px'>",
+      "Filet Mignon Com Bacon (Wrapped In Bacon)<br> Lombo (Pork Tenderloin)<br> Costela de Porco (Baby Back Ribs)<br>Linguica (Brazilian Sausage)",
+      "$21<br> $15 <br> $15.5 <br> $12" ,
+      "10 minutes by bike"
+    ],
+    [
+      "Qdoba",
+      "<img src='Images/qdoba.png' height='80px'>",
+      "Queso Burrito <br>Smothered Burrito<br> Mexican Gumbo<br>Cheese (Cheddar & Monterey Jack)",
+      "$17 <br>$26 <br> $16.5 <br>$24" ,
+      "20 minutes by bike"
+    ]
+  ]
+
+}
